@@ -7,6 +7,7 @@ class IndexView(ListView):
     model = BlogPost
     context_object_name = 'posts'
     template_name = 'blog/index.html'
+    queryset = BlogPost.objects.filter(display=True).order_by('-created')
 
 
 class PostView(DetailView):
