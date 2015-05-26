@@ -1,0 +1,96 @@
+/***************
+GENERAL
+***************/
+
+header {
+    background-color: #35E6F2;
+    padding: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #FFF;
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+}
+
+nav a {
+    font-size: 1.5em;
+    color: #222;
+    padding: 12px;
+}
+
+nav a:hover {
+    color: #F24135;
+}
+
+section {
+    margin: 3%;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+textarea {
+    font-family: 'Lato', sans-serif;
+}
+
+footer {
+    margin: 1%;
+}
+
+
+
+/***************
+CLASS STUFF
+***************/
+
+.active {
+    font-weight: 700;
+}
+
+.btn {
+    background-color: #FFF;
+    color: #111;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 4px;
+}
+
+.btn:active {
+    background-color: #EEE;
+    color: #000;
+}
+
+.btn:hover {
+    color: #5D96B0;
+}
+
+.titleDivider {
+    width: 200px;
+    float: left;
+    margin: 0;
+}
+
+.headingLink {
+    font-weight: 400;
+}
+
+.headingLink:hover {
+    color: #5D96B0;
+}
