@@ -28,6 +28,10 @@ body {
     margin: 0;
 }
 
+nav ul {
+    display: inline-block;
+}
+
 nav ul li {
     display: inline-block;
     list-style: none;
@@ -98,6 +102,10 @@ CLASS STUFF
     color: #5D96B0;
 }
 
+.contact {
+    list-style: none;
+}
+
 .container {
     /*margin: 0 7%;*/
 }
@@ -114,10 +122,14 @@ CLASS STUFF
     text-align: center;
 }
 
+.navbar-right {
+    float: right;
+}
+
 .right-float {
     display: inline-block;
     float: left;
-    max-width: 30%;
+    max-width: 28%;
     margin-right: 3%;
 }
 
