@@ -8,7 +8,7 @@
   <section class="left-float">
     {% for post in posts %}
     <div class="container post">
-      <h2>{{ post.title }} <small class="date-stamp">{{ post.created }}</small></h2>
+      <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a> <small class="date-stamp">{{ post.created }}</small></h2>
       <p>{{ post.content }}</p>
     </div>
     {% endfor %}
@@ -17,7 +17,7 @@
   <section class="right-float">
     <div id="about">
       <h3>About Me</h3>
-      <p>My name is Karli. I'm a twenty-something living in Seattle, writing about my experiences as a mom to an amazing little girl and as a wife to a so-so husband. I love Jesus, my family, crafting, and raising chickens (and keeping out Beagle from killing them).</p>
+      <p>My name is Karli. I'm a twenty-something living in Seattle, Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p>Contact me!</p>
       <ul id="contact">
         <li>Email me</li>
