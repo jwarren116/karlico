@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from blog.models import BlogPost
 
@@ -14,3 +13,4 @@ class PostView(DetailView):
     model = BlogPost
     context_object_name = 'post'
     template_name = 'blog/detail.html'
+    queryset = BlogPost.objects.filter(display=True)
