@@ -10,19 +10,27 @@
     <title>Karli's Blog</title>
     <!-- Core CSS -->
     <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- Google Font -->
     <link href='http://fonts.googleapis.com/css?family=Raleway|Lobster' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
   <body>
 
     <header>
-        <nav>
-            <ul>
-                <li>Cool Snug Logo Here</li>
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Somewhere Else</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>Snug Logo Here</li>
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Older Posts</a></li>
+        </ul>
+        <ul class="navbar-right">
+          <li><a href="mailto:karli@karli.co"><i class="fa fa-envelope"></i></a></li>
+          <li><a href="http://www.pinterest.com/karliwarren"><i class="fa fa-pinterest-square"></i></a></li>
+          <li><a href="http://www.thirtyonegifts.com/karliwarren">Thirty-one</a></li>
+      </nav>
     </header>
+  
     <section>
     {% block body %}
     {% endblock %}
