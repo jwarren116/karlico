@@ -106,10 +106,6 @@ CLASS STUFF
     color: #5D96B0;
 }
 
-.contact {
-    list-style: none;
-}
-
 .container {
     /*margin: 0 7%;*/
 }
@@ -128,6 +124,7 @@ CLASS STUFF
 
 .navbar-right {
     float: right;
+    margin-right: 3%;
 }
 
 .right-float {
@@ -146,4 +143,26 @@ CLASS STUFF
 
 .post {
     margin-bottom: 40px;
+}
+
+
+
+/***************
+ID STUFF
+***************/
+
+#about {
+
+}
+
+#contact {
+    list-style: none;
+}
+
+#contact a {
+    color: #F24135;
+}
+
+#contact a:hover {
+    font-weight: 700;
 }
