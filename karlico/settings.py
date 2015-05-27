@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,6 +85,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'karlico/static/'),
 )
+
+MEDIA_URL = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'blog/templates/blog/'),
