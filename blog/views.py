@@ -1,5 +1,6 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from blog.models import BlogPost
+from blog.models import BlogPost, Image
 
 
 class IndexView(ListView):
@@ -14,6 +15,15 @@ class PostView(DetailView):
     context_object_name = 'post'
     template_name = 'blog/detail.html'
     queryset = BlogPost.objects.filter(display=True)
+
+
+def post_detail(request, pk):
+    post = BlogPost.objects.filter(display=True).get(pk=pk)
+    images = Image.objects.filter(post=pk)
+    return render(request, 'blog/detail.html', {
+        'post': post,
+        'images': images,
+    })
 
 
 class PostList(ListView):

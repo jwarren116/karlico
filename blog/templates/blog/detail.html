@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 
 {% block body %}
@@ -8,6 +9,11 @@
     <div class="container post">
       <h2>{{ post.title }} <small class="date-stamp">{{ post.created }}</small></h2>
       <p>{{ post.content }}</p>
+      <ul>
+      {% for image in images %}
+          <li><img src="{{ image.image.url }}" /><br />{{ image.caption }}</li>
+      {% endfor %}
+      </ul>
     </div>
   </section>
 
