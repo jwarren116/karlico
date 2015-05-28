@@ -58,6 +58,7 @@ target/
 
 # Uploaded Images Folder
 img/
+media/
 
 # Sqlite DB
 *.sqlite3
