@@ -7,7 +7,8 @@
   <section>
     <div class="container post">
       <h2>{{ post.title }} <small class="date-stamp">{{ post.created }}</small></h2>
-      <p>{{ post.content }}</p>
+      
+      {{ post.content|safe|linebreaks }}
       
       {% for image in images %}
         {% thumbnail image.image "600x450" as im %}
