@@ -9,11 +9,14 @@
     <div class="container post">
       <h2>{{ post.title }} <small class="date-stamp">{{ post.created }}</small></h2>
       <p>{{ post.content }}</p>
-      <ul>
+      
       {% for image in images %}
-          <li><img src="{{ image.image.url }}" /><br />{{ image.caption }}</li>
+        {% thumbnail image.image "600x450" as im %}
+        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+        {% endthumbnail %}
+        <br />{{ image.caption }}<br /><br />
       {% endfor %}
-      </ul>
+      
     </div>
   </section>
 
