@@ -116,7 +116,7 @@ CLASS STUFF
 }
 
 .heading {
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
     display: block;
     margin: 0 auto;
     text-align: center;
