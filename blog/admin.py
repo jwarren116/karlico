@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from blog.models import BlogPost, Image
+from blog.models import BlogPost, Image, Category
 
 
 class ImageInline(admin.StackedInline):
@@ -11,6 +11,7 @@ class ImageInline(admin.StackedInline):
 class PostAdmin(admin.ModelAdmin):
     model = BlogPost
     inlines = [ImageInline]
-    list_display = ('title', 'content', 'created', 'display')
+    list_display = ('title', 'category', 'content', 'created', 'display')
 
 admin.site.register(BlogPost, PostAdmin)
+admin.site.register(Category)
