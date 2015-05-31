@@ -19,6 +19,14 @@ def index(request):
     })
 
 
+def category(request, category):
+    post_category = Category.objects.filter(category=category)
+    posts = BlogPost.objects.filter(display=True).filter(category=post_category)
+    return render(request, 'blog/posts.html', {
+        'posts': posts,
+    })
+
+
 class PostView(DetailView):
     model = BlogPost
     context_object_name = 'post'
