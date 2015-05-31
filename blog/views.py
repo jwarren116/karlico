@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from blog.models import BlogPost, Image
+from blog.models import BlogPost, Image, Category
 
 
 class IndexView(ListView):
@@ -8,6 +8,15 @@ class IndexView(ListView):
     context_object_name = 'posts'
     template_name = 'blog/index.html'
     queryset = BlogPost.objects.filter(display=True).order_by('-created')[:5]
+
+
+def index(request):
+    posts = BlogPost.objects.filter(display=True).order_by('-created')[:5]
+    categories = Category.objects.all()
+    return render(request, 'blog/index.html', {
+        'posts': posts,
+        'categories': categories,
+    })
 
 
 class PostView(DetailView):
