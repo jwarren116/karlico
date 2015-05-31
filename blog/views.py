@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from blog.models import BlogPost, Image, Category
 
@@ -20,8 +20,8 @@ def index(request):
 
 
 def category(request, slug):
-    post_category = Category.objects.filter(slug=slug)
-    posts = BlogPost.objects.filter(display=True).filter(category=post_category)
+    category = get_object_or_404(Category, slug=slug)
+    posts = BlogPost.objects.filter(display=True).filter(category=category)
     return render(request, 'blog/posts.html', {
         'posts': posts,
     })
