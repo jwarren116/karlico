@@ -2,7 +2,8 @@ from django.db import models
 
 
 class Category(models.Model):
-    category = models.CharField('Category', max_length=63)
+    category = models.CharField('Category', max_length=63, unique=True)
+    slug = models.SlugField('URL Slug', max_length=63, unique=True)
 
     class Meta:
         verbose_name_plural = 'categories'
@@ -10,9 +11,14 @@ class Category(models.Model):
     def __unicode__(self):
         return self.category
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('blog.views.category', args=[str(self.slug)])
+
 
 class BlogPost(models.Model):
-    title = models.CharField('Title', max_length=63)
+    title = models.CharField('Title', max_length=127, unique=True)
+    slug = models.SlugField('URL Slug', max_length=127, unique=True)
     content = models.TextField('Content')
     category = models.ForeignKey(Category)
     created = models.DateTimeField('Created', auto_now_add=True, auto_now=False)
@@ -20,6 +26,10 @@ class BlogPost(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('blog.views.post_detail', args=[str(self.slug)])
 
 
 class Image(models.Model):

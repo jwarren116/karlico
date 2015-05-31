@@ -19,8 +19,8 @@ def index(request):
     })
 
 
-def category(request, category):
-    post_category = Category.objects.filter(category=category)
+def category(request, slug):
+    post_category = Category.objects.filter(slug=slug)
     posts = BlogPost.objects.filter(display=True).filter(category=post_category)
     return render(request, 'blog/posts.html', {
         'posts': posts,
