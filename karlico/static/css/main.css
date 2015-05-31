@@ -130,14 +130,14 @@ CLASS STUFF
 .right-float {
     display: inline-block;
     float: left;
-    max-width: 28%;
+    width: 28%;
     margin-right: 3%;
 }
 
 .left-float {
     display: inline-block;
     float: left;
-    max-width: 60%;
+    width: 60%;
     margin-left: 3%;
 }
 
