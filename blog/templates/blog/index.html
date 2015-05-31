@@ -13,6 +13,16 @@
   </section>
 
   <section class="right-float">
+    <div>
+      <h3>Browse by Category</h3>
+        <ul id="categories">
+        {% for category in categories %}
+          <li><a href="#">{{ category }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    </div>
     <div id="about">
       <h3>About Me</h3>
       <p>My name is Karli. I'm a twenty-something living in Seattle, Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
