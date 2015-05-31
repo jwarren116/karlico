@@ -166,3 +166,15 @@ ID STUFF
 #contact a:hover {
     font-weight: 700;
 }
+
+#categories {
+    list-style: none;
+}
+
+#categories a {
+    color: #F24135;
+}
+
+#categories a:hover {
+    font-weight: 700;
+}
