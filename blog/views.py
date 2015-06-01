@@ -3,11 +3,11 @@ from django.views.generic import ListView, DetailView
 from blog.models import BlogPost, Image, Category
 
 
-class IndexView(ListView):
-    model = BlogPost
-    context_object_name = 'posts'
-    template_name = 'blog/index.html'
-    queryset = BlogPost.objects.filter(display=True).order_by('-created')[:5]
+# class IndexView(ListView):
+#     model = BlogPost
+#     context_object_name = 'posts'
+#     template_name = 'blog/index.html'
+#     queryset = BlogPost.objects.filter(display=True).order_by('-created')[:5]
 
 
 def index(request):
@@ -27,16 +27,16 @@ def category(request, slug):
     })
 
 
-class PostView(DetailView):
-    model = BlogPost
-    context_object_name = 'post'
-    template_name = 'blog/detail.html'
-    queryset = BlogPost.objects.filter(display=True)
+# class PostView(DetailView):
+#     model = BlogPost
+#     context_object_name = 'post'
+#     template_name = 'blog/detail.html'
+#     queryset = BlogPost.objects.filter(display=True)
 
 
-def post_detail(request, pk):
-    post = BlogPost.objects.filter(display=True).get(pk=pk)
-    images = Image.objects.filter(post=pk)
+def post_detail(request, slug):
+    post = get_object_or_404(BlogPost, slug=slug)
+    images = Image.objects.filter(post=post)
     return render(request, 'blog/detail.html', {
         'post': post,
         'images': images,
