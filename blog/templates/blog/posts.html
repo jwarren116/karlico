@@ -6,7 +6,7 @@
   <section>
     {% for post in posts %}
     <div class="container post">
-      <h2><a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a> <small class="date-stamp">{{ post.created }}</small></h2>
+      <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small class="date-stamp">{{ post.created }}</small></h2>
       {{ post.content|safe|linebreaks|truncatewords:100 }}
     </div>
     {% endfor %}
