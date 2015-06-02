@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+
+{% block body %}
+
+  <section>
+    <div class="container post">
+      <h2>{{ post.title }} <small class="date-stamp">{{ post.created }}</small></h2>
+      
+      {{ post.content|safe|linebreaks }}
+      
+      {% for image in images %}
+        {% thumbnail image.image "600x450" as im %}
+        <a href="{{ im.url }}">
+          <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" />
+        </a>
+        {% endthumbnail %}
+        <br />{{ image.caption }}<br /><br />
+      {% endfor %}
+      
+    </div>
+  </section>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+  <section class="left-float">
+    {% for post in posts %}
+    <div class="container post">
+      <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small class="date-stamp">{{ post.created }}</small></h2>
+      {{ post.content|safe|linebreaks|truncatewords:100 }}
+    </div>
+    {% endfor %}
+  </section>
+
+  <section class="right-float">
+    <div>
+      <h3>Browse by Category</h3>
+        <ul id="categories">
+        {% for category in categories %}
+          <li><a href="{{ category.get_absolute_url }}">{{ category.category }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    </div>
+    <div id="about">
+      <h3>About Me</h3>
+      <p>My name is Karli. I'm a twenty-something living in Seattle, Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Check out some of my other sites!</p>
+      <ul id="contact">
+        <li><a href="http://www.mythirtyone.com/karliwarren" target="_blank">Thirty-One</a></li>
+        <li><a href="#" target="_blank">Etsy</a></li>
+        <li><a href="#" target="_blank">Pinterest</li>
+        <li><a href="#" target="_blank">YouTube</li>
+      </ul>
+    </div>
+  </section>
+
+{% endblock %}
