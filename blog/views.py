@@ -34,7 +34,7 @@ def category(request, slug):
 #     queryset = BlogPost.objects.filter(display=True)
 
 
-def post_detail(request, slug):
+def post_detail(request, category, slug):
     post = get_object_or_404(BlogPost, slug=slug)
     images = Image.objects.filter(post=post)
     return render(request, 'blog/detail.html', {
