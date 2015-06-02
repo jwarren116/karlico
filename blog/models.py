@@ -29,7 +29,7 @@ class BlogPost(models.Model):
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
-        return reverse('blog.views.post_detail', args=[str(self.slug)])
+        return reverse('blog.views.post_detail', args=[str(self.category.slug), str(self.slug)])
 
 
 class Image(models.Model):
