@@ -45,7 +45,7 @@ class About(models.Model):
     content = models.TextField('About Me')
 
     class Meta:
-        verbose_name_plural = 'About'
+        verbose_name_plural = 'About Me'
 
     def __unicode__(self):
         return self.content
