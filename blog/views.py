@@ -4,7 +4,7 @@ from blog.models import BlogPost, Image, Category
 
 def index(request):
     posts = BlogPost.objects.filter(display=True).order_by('-created')[:5]
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('category')
     return render(request, 'blog/index.html', {
         'posts': posts,
         'categories': categories,
@@ -12,7 +12,7 @@ def index(request):
 
 
 def category(request, slug):
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('category')
     category = get_object_or_404(Category, slug=slug)
     posts = BlogPost.objects.filter(display=True).filter(category=category)
     return render(request, 'blog/posts.html', {
@@ -28,7 +28,7 @@ def post_detail(request, category, slug):
     else:
         post = get_object_or_404(BlogPost, slug=slug, display=True)
         images = Image.objects.filter(post=post)
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('category')
     return render(request, 'blog/detail.html', {
         'post': post,
         'images': images,
@@ -38,7 +38,7 @@ def post_detail(request, category, slug):
 
 def posts(request):
     posts = BlogPost.objects.filter(display=True).order_by('-created')
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('category')
     return render(request, 'blog/posts.html', {
         'posts': posts,
         'categories': categories,
