@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import BlogPost, Image, Category
+from blog.models import BlogPost, Image, Category, About
 
 
 def index(request):
     posts = BlogPost.objects.filter(display=True).order_by('-created')[:5]
     categories = Category.objects.order_by('category')
+    about = About.objects.first()
     return render(request, 'blog/index.html', {
         'posts': posts,
         'categories': categories,
+        'about': about,
     })
 
 
