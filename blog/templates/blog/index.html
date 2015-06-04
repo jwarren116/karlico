@@ -26,13 +26,14 @@
     <div id="about">
       <h3>About Me</h3>
       {{ about.content|safe|linebreaks }}
+      {% if about.link_set.all %}
       <p>Check out some of my other sites!</p>
       <ul id="contact">
-        <li><a href="http://www.mythirtyone.com/karliwarren" target="_blank">Thirty-One</a></li>
-        <li><a href="#" target="_blank">Etsy</a></li>
-        <li><a href="#" target="_blank">Pinterest</li>
-        <li><a href="#" target="_blank">YouTube</li>
+        {% for link in about.link_set.all %}
+        <li><a href="{{ link.link }}" target="_blank">{{ link.name }}</a></li>
+        {% endfor %}
       </ul>
+      {% endif %}
     </div>
   </section>
 
