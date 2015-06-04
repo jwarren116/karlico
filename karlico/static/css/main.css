@@ -136,6 +136,10 @@ CLASS STUFF
 }
 
 .dropdown-link {
+    padding: 4px;
+}
+
+.dropdown-list {
     margin-left: -35px;
 }
 
