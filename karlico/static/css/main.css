@@ -90,7 +90,12 @@ nav ul ul {
 
 nav ul li:hover > ul {
     display: block;
-    background: rgba(53, 230, 242, .04);
+    background: #daf8fb;
+}
+
+nav ul ul li {
+    clear: both;
+    white-space: nowrap;
 }
 
 nav a {
