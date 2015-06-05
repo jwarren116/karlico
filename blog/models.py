@@ -39,3 +39,19 @@ class Image(models.Model):
 
     def __unicode__(self):
         return self.caption
+
+
+class About(models.Model):
+    content = models.TextField('About Me')
+
+    class Meta:
+        verbose_name_plural = 'About Me'
+
+    def __unicode__(self):
+        return self.content
+
+
+class Link(models.Model):
+    name = models.CharField('Name of Site', max_length=63)
+    link = models.URLField('Link')
+    about = models.ForeignKey(About)
