@@ -25,15 +25,14 @@
     </div>
     <div id="about">
       <h3>About Me</h3>
-      {{ about.content|safe|linebreaks }}
-      {% if about.link_set.all %}
+      <p>My name is Karli. I'm a twenty-something living in Seattle, Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p>Check out some of my other sites!</p>
       <ul id="contact">
-        {% for link in about.link_set.all %}
-        <li><a href="{{ link.link }}" target="_blank">{{ link.name }}</a></li>
-        {% endfor %}
+        <li><a href="http://www.mythirtyone.com/karliwarren" target="_blank">Thirty-One</a></li>
+        <li><a href="#" target="_blank">Etsy</a></li>
+        <li><a href="#" target="_blank">Pinterest</li>
+        <li><a href="#" target="_blank">YouTube</li>
       </ul>
-      {% endif %}
     </div>
   </section>
 
