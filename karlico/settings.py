@@ -1,95 +1,73 @@
-"""
-Django settings for karlico project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
-"""
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from configurations import Settings
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+class Base(Settings):
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7j!g$yf)qfz6he-(^w0w94uxs4p=99@+sk$b66zyvifuw8aavz'
+    INSTALLED_APPS = (
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'blog',
+        'sorl.thumbnail',
+    )
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-THUMBNAIL_DEBUG = DEBUG
-TEMPLATE_DEBUG = DEBUG
+    MIDDLEWARE_CLASSES = (
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    )
 
-ALLOWED_HOSTS = []
+    ROOT_URLCONF = 'karlico.urls'
 
+    WSGI_APPLICATION = 'karlico.wsgi.application'
 
-# Application definition
-
-INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'blog',
-    'sorl.thumbnail',
-)
-
-MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
-
-ROOT_URLCONF = 'karlico.urls'
-
-WSGI_APPLICATION = 'karlico.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+    LANGUAGE_CODE = 'en-us'
+    TIME_ZONE = 'America/Los_Angeles'
+    USE_I18N = True
+    USE_L10N = True
+    USE_TZ = True
 
-LANGUAGE_CODE = 'en-us'
+    STATIC_ROOT = BASE_DIR + '/public/static/'
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'karlico/static/'),
+    )
 
-TIME_ZONE = 'America/Los_Angeles'
+    MEDIA_URL = '/img/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-USE_I18N = True
+    TEMPLATE_DIRS = (
+        os.path.join(BASE_DIR, 'blog/templates/blog/'),
+        os.path.join(BASE_DIR, 'karlico/templates/'),
+    )
 
-USE_L10N = True
 
-USE_TZ = True
+class Dev(Base):
+    ALLOWED_HOSTS = ['*']
+    SECRET_KEY = '7j!g$yf)qfz6he-(^w0w94uxs4p=99@+sk$b66zyvifuw8aavz'
+    DEBUG = True
+    THUMBNAIL_DEBUG = DEBUG
+    TEMPLATE_DEBUG = DEBUG
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'karlico/static/'),
-)
-
-MEDIA_URL = '/img/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'blog/templates/blog/'),
-    os.path.join(BASE_DIR, 'karlico/templates/'),
-)
+class Prod(Base):
+    ALLOWED_HOSTS = ['.karli.co']
+    SECRET_KEY = os.environ.get('SECRET_KEY', 's3cr!th4$]-[')
+    DEBUG = False
+    THUMBNAIL_DEBUG = DEBUG
+    TEMPLATE_DEBUG = DEBUG
