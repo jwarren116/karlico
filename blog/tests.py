@@ -29,3 +29,21 @@ class AboutFactory(factory.django.DjangoModelFactory):
         model = About
 
     content = 'Some interesting things about me'
+
+
+class TestHomeView(LiveServerTestCase):
+    def setUp(self):
+        self.selenium = webdriver.Firefox()
+        self.post = PostFactory.create()
+        self.about = AboutFactory.create()
+        super(TestHomeView, self).setUp()
+
+    def tearDown(self):
+        self.selenium.quit()
+        super(TestHomeView, self).tearDown()
+
+    def test_home(self):
+        '''test that home page is available to visitor'''
+        self.selenium.get(self.live_server_url)
+        assert self.selenium.find_element_by_id('about')
+        assert self.selenium.find_element_by_class('post')
