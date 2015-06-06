@@ -55,3 +55,6 @@ class Link(models.Model):
     name = models.CharField('Name of Site', max_length=63)
     link = models.URLField('Link')
     about = models.ForeignKey(About)
+
+    def __unicode__(self):
+        return self.name
