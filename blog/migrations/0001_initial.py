@@ -11,6 +11,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='About',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('content', models.TextField(verbose_name=b'About Me')),
+            ],
+            options={
+                'verbose_name_plural': 'About Me',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='BlogPost',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -43,6 +54,18 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(upload_to=b'img', verbose_name=b'Image')),
                 ('caption', models.TextField(verbose_name=b'Caption')),
                 ('post', models.ForeignKey(to='blog.BlogPost')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Link',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=63, verbose_name=b'Name of Site')),
+                ('link', models.URLField(verbose_name=b'Link')),
+                ('about', models.ForeignKey(to='blog.About')),
             ],
             options={
             },
