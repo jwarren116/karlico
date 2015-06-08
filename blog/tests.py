@@ -46,7 +46,7 @@ class TestHomeView(LiveServerTestCase):
         '''test that home page is available to visitor'''
         self.selenium.get(self.live_server_url)
         assert self.selenium.find_element_by_id('about')
-        assert self.selenium.find_element_by_class('post')
+        assert self.selenium.find_element_by_class_name('post')
 
     def test_posts(self):
         '''test that post details and return links are available to visitor'''
