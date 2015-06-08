@@ -4,10 +4,15 @@
 {% block body %}
 
   <section>
+    <h5><a href="javascript:history.go(-1)">&lsaquo;&lsaquo; Back</a></h5>
     {% for post in posts %}
     <div class="container post">
       <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a> <small class="date-stamp">{{ post.created }}</small></h2>
       {{ post.content|safe|linebreaks|truncatewords:100 }}
+    </div>
+    {% empty %}
+    <div class="container post">
+      <center><h2>Whoops! There are currently no posts in this category.</h2></center>
     </div>
     {% endfor %}
   </section>
