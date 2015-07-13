@@ -46,7 +46,7 @@ class TestHomeView(LiveServerTestCase):
         '''test that home page is available to visitor'''
         self.selenium.get(self.live_server_url)
         assert self.selenium.find_element_by_id('about')
-        assert self.selenium.find_element_by_class('post')
+        assert self.selenium.find_element_by_class_name('post')
 
     def test_posts(self):
         '''test that post details and return links are available to visitor'''
@@ -55,3 +55,9 @@ class TestHomeView(LiveServerTestCase):
         assert self.selenium.find_element_by_class_name('post')
         self.selenium.find_element_by_partial_link_text('Back').click()
         assert self.selenium.find_element_by_id('about')
+
+    def test_invalid_url(self):
+        '''test that invalid URL path returns custom 404 page'''
+        self.selenium.get(self.live_server_url+'/posts/fake-category')
+        assert self.selenium.find_element_by_class_name('container')
+        self.assertIn('Page not found', self.selenium.page_source)

@@ -48,8 +48,8 @@ class Base(Settings):
         os.path.join(BASE_DIR, 'karlico/static/'),
     )
 
-    MEDIA_URL = '/img/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR + '/public/media/'
 
     TEMPLATE_DIRS = (
         os.path.join(BASE_DIR, 'blog/templates/blog/'),
